@@ -1,0 +1,14 @@
+import tensorflow as tf
+
+tf.reset_default_graph()
+# Build a dataflow graph
+c = tf.constant([[1.0,2.0],[2.0,4.0]],name='c')
+d = tf.constant([[1.0,1.0],[0,1.0]],name='d')
+# a tensor can be passed as input to another operation. This build a dataflow connection 
+#between operations
+e = tf.matmul(c,d,name='e')
+#A Tensor is a symbolic handle to one of the outputs of an Operations.
+print(e)
+#print(tf.get_default_graph().as_graph_def())
+with tf.Session() as sess:
+    print(sess.run(c))
